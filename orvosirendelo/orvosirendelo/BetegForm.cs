@@ -21,6 +21,9 @@ namespace orvosirendelo
         {
             BetegRegisztralForm brf = new BetegRegisztralForm();
             brf.Show();
+            string iras;
+            iras = label1.Font.Height.ToString();
+            MessageBox.Show(iras);
         }
 
         private void button1_Click(object sender, EventArgs e)

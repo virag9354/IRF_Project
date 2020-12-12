@@ -117,6 +117,9 @@
     <EmbeddedResource Include="HaziorvosUserControl.resx">
       <DependentUpon>HaziorvosUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="IdopontForm.resx">
+      <DependentUpon>IdopontForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NogyogyaszUserControl.resx">
       <DependentUpon>NogyogyaszUserControl.cs</DependentUpon>
     </EmbeddedResource>

@@ -15,6 +15,14 @@ namespace orvosirendelo
         public IdopontForm()
         {
             InitializeComponent();
+
+            panel1.Controls.Clear();
+
+            NogyogyaszUserControl nuc = new NogyogyaszUserControl();
+
+            panel1.Controls.Add(nuc);
+
+            nuc.Dock = DockStyle.Fill;
         }
     }
 }

@@ -16,5 +16,11 @@ namespace orvosirendelo
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            IdopontForm ipf = new IdopontForm();
+            ipf.Show();
+        }
     }
 }

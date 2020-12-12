@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Database2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Betegek">
+          <Key>
+            <PropertyRef Name="BetegSK" />
+          </Key>
+          <Property Name="BetegSK" Type="int" Nullable="false" />
+          <Property Name="BetegNev" Type="nvarchar" MaxLength="50" />
+          <Property Name="SZIG" Type="nchar" MaxLength="8" />
+          <Property Name="TAJ" Type="nchar" MaxLength="9" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefonszám" Type="nchar" MaxLength="11" />
+          <Property Name="Jelszo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Ido">
+          <Key>
+            <PropertyRef Name="IdoSK" />
+          </Key>
+          <Property Name="IdoSK" Type="int" Nullable="false" />
+          <Property Name="Idotartam" Type="nvarchar" MaxLength="11" />
+        </EntityType>
+        <EntityType Name="Idopont">
+          <Key>
+            <PropertyRef Name="IdopontSK" />
+          </Key>
+          <Property Name="IdopontSK" Type="int" Nullable="false" />
+          <Property Name="Datum" Type="datetime" />
+          <Property Name="IdoFK" Type="int" />
+          <Property Name="BetegFK" Type="int" />
+          <Property Name="OrvosFK" Type="int" />
+        </EntityType>
+        <EntityType Name="Orvosfajtak">
+          <Key>
+            <PropertyRef Name="OrvosfajtaSK" />
+          </Key>
+          <Property Name="OrvosfajtaSK" Type="int" Nullable="false" />
+          <Property Name="Orvosfajta" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Orvosok">
+          <Key>
+            <PropertyRef Name="OrvosSK" />
+          </Key>
+          <Property Name="OrvosSK" Type="int" Nullable="false" />
+          <Property Name="OrvosNev" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrvosfajtaFK" Type="int" />
+          <Property Name="Jelszo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Idopont_ToBetegek">
+          <End Role="Betegek" Type="Self.Betegek" Multiplicity="0..1" />
+          <End Role="Idopont" Type="Self.Idopont" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Betegek">
+              <PropertyRef Name="BetegSK" />
+            </Principal>
+            <Dependent Role="Idopont">
+              <PropertyRef Name="BetegFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Idopont_ToIdo">
+          <End Role="Ido" Type="Self.Ido" Multiplicity="0..1" />
+          <End Role="Idopont" Type="Self.Idopont" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ido">
+              <PropertyRef Name="IdoSK" />
+            </Principal>
+            <Dependent Role="Idopont">
+              <PropertyRef Name="IdoFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Idopont_ToOrvosok">
+          <End Role="Orvosok" Type="Self.Orvosok" Multiplicity="0..1" />
+          <End Role="Idopont" Type="Self.Idopont" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orvosok">
+              <PropertyRef Name="OrvosSK" />
+            </Principal>
+            <Dependent Role="Idopont">
+              <PropertyRef Name="OrvosFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orvosok_ToOrvosfajtak">
+          <End Role="Orvosfajtak" Type="Self.Orvosfajtak" Multiplicity="0..1" />
+          <End Role="Orvosok" Type="Self.Orvosok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orvosfajtak">
+              <PropertyRef Name="OrvosfajtaSK" />
+            </Principal>
+            <Dependent Role="Orvosok">
+              <PropertyRef Name="OrvosfajtaFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Database2ModelStoreContainer">
+          <EntitySet Name="Betegek" EntityType="Self.Betegek" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ido" EntityType="Self.Ido" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Idopont" EntityType="Self.Idopont" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orvosfajtak" EntityType="Self.Orvosfajtak" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orvosok" EntityType="Self.Orvosok" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Idopont_ToBetegek" Association="Self.FK_Idopont_ToBetegek">
+            <End Role="Betegek" EntitySet="Betegek" />
+            <End Role="Idopont" EntitySet="Idopont" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Idopont_ToIdo" Association="Self.FK_Idopont_ToIdo">
+            <End Role="Ido" EntitySet="Ido" />
+            <End Role="Idopont" EntitySet="Idopont" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Idopont_ToOrvosok" Association="Self.FK_Idopont_ToOrvosok">
+            <End Role="Orvosok" EntitySet="Orvosok" />
+            <End Role="Idopont" EntitySet="Idopont" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orvosok_ToOrvosfajtak" Association="Self.FK_Orvosok_ToOrvosfajtak">
+            <End Role="Orvosfajtak" EntitySet="Orvosfajtak" />
+            <End Role="Orvosok" EntitySet="Orvosok" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Database2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Betegek">
+          <Key>
+            <PropertyRef Name="BetegSK" />
+          </Key>
+          <Property Name="BetegSK" Type="Int32" Nullable="false" />
+          <Property Name="BetegNev" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SZIG" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="TAJ" Type="String" MaxLength="9" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefonszám" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="Jelszo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Idoponts" Relationship="Self.FK_Idopont_ToBetegek" FromRole="Betegek" ToRole="Idopont" />
+        </EntityType>
+        <EntityType Name="Ido">
+          <Key>
+            <PropertyRef Name="IdoSK" />
+          </Key>
+          <Property Name="IdoSK" Type="Int32" Nullable="false" />
+          <Property Name="Idotartam" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Idoponts" Relationship="Self.FK_Idopont_ToIdo" FromRole="Ido" ToRole="Idopont" />
+        </EntityType>
+        <EntityType Name="Idopont">
+          <Key>
+            <PropertyRef Name="IdopontSK" />
+          </Key>
+          <Property Name="IdopontSK" Type="Int32" Nullable="false" />
+          <Property Name="Datum" Type="DateTime" Precision="3" />
+          <Property Name="IdoFK" Type="Int32" />
+          <Property Name="BetegFK" Type="Int32" />
+          <Property Name="OrvosFK" Type="Int32" />
+          <NavigationProperty Name="Betegek" Relationship="Self.FK_Idopont_ToBetegek" FromRole="Idopont" ToRole="Betegek" />
+          <NavigationProperty Name="Ido" Relationship="Self.FK_Idopont_ToIdo" FromRole="Idopont" ToRole="Ido" />
+          <NavigationProperty Name="Orvosok" Relationship="Self.FK_Idopont_ToOrvosok" FromRole="Idopont" ToRole="Orvosok" />
+        </EntityType>
+        <EntityType Name="Orvosfajtak">
+          <Key>
+            <PropertyRef Name="OrvosfajtaSK" />
+          </Key>
+          <Property Name="OrvosfajtaSK" Type="Int32" Nullable="false" />
+          <Property Name="Orvosfajta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Orvosoks" Relationship="Self.FK_Orvosok_ToOrvosfajtak" FromRole="Orvosfajtak" ToRole="Orvosok" />
+        </EntityType>
+        <EntityType Name="Orvosok">
+          <Key>
+            <PropertyRef Name="OrvosSK" />
+          </Key>
+          <Property Name="OrvosSK" Type="Int32" Nullable="false" />
+          <Property Name="OrvosNev" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrvosfajtaFK" Type="Int32" />
+          <NavigationProperty Name="Idoponts" Relationship="Self.FK_Idopont_ToOrvosok" FromRole="Orvosok" ToRole="Idopont" />
+          <NavigationProperty Name="Orvosfajtak" Relationship="Self.FK_Orvosok_ToOrvosfajtak" FromRole="Orvosok" ToRole="Orvosfajtak" />
+          <Property Name="Jelszo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Idopont_ToBetegek">
+          <End Role="Betegek" Type="Self.Betegek" Multiplicity="0..1" />
+          <End Role="Idopont" Type="Self.Idopont" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Betegek">
+              <PropertyRef Name="BetegSK" />
+            </Principal>
+            <Dependent Role="Idopont">
+              <PropertyRef Name="BetegFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Idopont_ToIdo">
+          <End Role="Ido" Type="Self.Ido" Multiplicity="0..1" />
+          <End Role="Idopont" Type="Self.Idopont" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ido">
+              <PropertyRef Name="IdoSK" />
+            </Principal>
+            <Dependent Role="Idopont">
+              <PropertyRef Name="IdoFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Idopont_ToOrvosok">
+          <End Role="Orvosok" Type="Self.Orvosok" Multiplicity="0..1" />
+          <End Role="Idopont" Type="Self.Idopont" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orvosok">
+              <PropertyRef Name="OrvosSK" />
+            </Principal>
+            <Dependent Role="Idopont">
+              <PropertyRef Name="OrvosFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orvosok_ToOrvosfajtak">
+          <End Role="Orvosfajtak" Type="Self.Orvosfajtak" Multiplicity="0..1" />
+          <End Role="Orvosok" Type="Self.Orvosok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orvosfajtak">
+              <PropertyRef Name="OrvosfajtaSK" />
+            </Principal>
+            <Dependent Role="Orvosok">
+              <PropertyRef Name="OrvosfajtaFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Database2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Betegeks" EntityType="Self.Betegek" />
+          <EntitySet Name="Idoes" EntityType="Self.Ido" />
+          <EntitySet Name="Idoponts" EntityType="Self.Idopont" />
+          <EntitySet Name="Orvosfajtaks" EntityType="Self.Orvosfajtak" />
+          <EntitySet Name="Orvosoks" EntityType="Self.Orvosok" />
+          <AssociationSet Name="FK_Idopont_ToBetegek" Association="Self.FK_Idopont_ToBetegek">
+            <End Role="Betegek" EntitySet="Betegeks" />
+            <End Role="Idopont" EntitySet="Idoponts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Idopont_ToIdo" Association="Self.FK_Idopont_ToIdo">
+            <End Role="Ido" EntitySet="Idoes" />
+            <End Role="Idopont" EntitySet="Idoponts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Idopont_ToOrvosok" Association="Self.FK_Idopont_ToOrvosok">
+            <End Role="Orvosok" EntitySet="Orvosoks" />
+            <End Role="Idopont" EntitySet="Idoponts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orvosok_ToOrvosfajtak" Association="Self.FK_Orvosok_ToOrvosfajtak">
+            <End Role="Orvosfajtak" EntitySet="Orvosfajtaks" />
+            <End Role="Orvosok" EntitySet="Orvosoks" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Database2ModelStoreContainer" CdmEntityContainer="Database2Entities">
+          <EntitySetMapping Name="Betegeks">
+            <EntityTypeMapping TypeName="Database2Model.Betegek">
+              <MappingFragment StoreEntitySet="Betegek">
+                <ScalarProperty Name="BetegSK" ColumnName="BetegSK" />
+                <ScalarProperty Name="BetegNev" ColumnName="BetegNev" />
+                <ScalarProperty Name="SZIG" ColumnName="SZIG" />
+                <ScalarProperty Name="TAJ" ColumnName="TAJ" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefonszám" ColumnName="Telefonszám" />
+                <ScalarProperty Name="Jelszo" ColumnName="Jelszo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Idoes">
+            <EntityTypeMapping TypeName="Database2Model.Ido">
+              <MappingFragment StoreEntitySet="Ido">
+                <ScalarProperty Name="IdoSK" ColumnName="IdoSK" />
+                <ScalarProperty Name="Idotartam" ColumnName="Idotartam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Idoponts">
+            <EntityTypeMapping TypeName="Database2Model.Idopont">
+              <MappingFragment StoreEntitySet="Idopont">
+                <ScalarProperty Name="IdopontSK" ColumnName="IdopontSK" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="IdoFK" ColumnName="IdoFK" />
+                <ScalarProperty Name="BetegFK" ColumnName="BetegFK" />
+                <ScalarProperty Name="OrvosFK" ColumnName="OrvosFK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orvosfajtaks">
+            <EntityTypeMapping TypeName="Database2Model.Orvosfajtak">
+              <MappingFragment StoreEntitySet="Orvosfajtak">
+                <ScalarProperty Name="OrvosfajtaSK" ColumnName="OrvosfajtaSK" />
+                <ScalarProperty Name="Orvosfajta" ColumnName="Orvosfajta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orvosoks">
+            <EntityTypeMapping TypeName="Database2Model.Orvosok">
+              <MappingFragment StoreEntitySet="Orvosok">
+                <ScalarProperty Name="Jelszo" ColumnName="Jelszo" />
+                <ScalarProperty Name="OrvosSK" ColumnName="OrvosSK" />
+                <ScalarProperty Name="OrvosNev" ColumnName="OrvosNev" />
+                <ScalarProperty Name="OrvosfajtaFK" ColumnName="OrvosfajtaFK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

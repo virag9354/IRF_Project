@@ -46,14 +46,83 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BetegForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BetegForm.Designer.cs">
+      <DependentUpon>BetegForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BetegRegisztralForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BetegRegisztralForm.Designer.cs">
+      <DependentUpon>BetegRegisztralForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BetegsegForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BetegsegForm.Designer.cs">
+      <DependentUpon>BetegsegForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BorgyogyaszUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BorgyogyaszUserControl.Designer.cs">
+      <DependentUpon>BorgyogyaszUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="HaziorvosUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HaziorvosUserControl.Designer.cs">
+      <DependentUpon>HaziorvosUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IdopontForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IdopontForm.Designer.cs">
+      <DependentUpon>IdopontForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NogyogyaszUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NogyogyaszUserControl.Designer.cs">
+      <DependentUpon>NogyogyaszUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrvosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrvosForm.Designer.cs">
+      <DependentUpon>OrvosForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="BetegForm.resx">
+      <DependentUpon>BetegForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BetegRegisztralForm.resx">
+      <DependentUpon>BetegRegisztralForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BetegsegForm.resx">
+      <DependentUpon>BetegsegForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HaziorvosUserControl.resx">
+      <DependentUpon>HaziorvosUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NogyogyaszUserControl.resx">
+      <DependentUpon>NogyogyaszUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrvosForm.resx">
+      <DependentUpon>OrvosForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

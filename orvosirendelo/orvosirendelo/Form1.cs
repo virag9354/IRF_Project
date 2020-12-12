@@ -16,5 +16,17 @@ namespace orvosirendelo
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OrvosForm of = new OrvosForm();
+            of.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            BetegForm bf1 = new BetegForm();
+            bf1.Show();
+        }
     }
 }

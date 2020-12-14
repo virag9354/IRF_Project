@@ -10,18 +10,13 @@ using System.Windows.Forms;
 
 namespace orvosirendelo
 {
-
-    public partial class NogyogyaszUserControl : UserControl
+    public partial class OJelenletUserControl : UserControl
     {
         DateTime moment = DateTime.Now;
         string kezdet;
-
-
-
-        public NogyogyaszUserControl()
+        public OJelenletUserControl()
         {
             InitializeComponent();
-
             Idokiiras();
 
             //Labelek kirakása
@@ -31,7 +26,7 @@ namespace orvosirendelo
                 Cimke label = new Cimke();
                 Cimke labell = new Cimke();
 
-                if (i==1)
+                if (i == 1)
                 {
 
                     label.Text = Convert.ToString(0) + Convert.ToString(i + 7) + ":00 - 0" + Convert.ToString(i + 7) + ":30";
@@ -42,22 +37,22 @@ namespace orvosirendelo
                 else if (i == 2)
                 {
 
-                        label.Text = Convert.ToString(0) + Convert.ToString(i + 7) + ":00 - 0" + Convert.ToString(i + 7) + ":30";
+                    label.Text = Convert.ToString(0) + Convert.ToString(i + 7) + ":00 - 0" + Convert.ToString(i + 7) + ":30";
 
-                        labell.Text = Convert.ToString(0) + Convert.ToString(i + 7) + ":30 - " + Convert.ToString(i + 8) + ":00";
+                    labell.Text = Convert.ToString(0) + Convert.ToString(i + 7) + ":30 - " + Convert.ToString(i + 8) + ":00";
 
                 }
-                else if (i>2)
+                else if (i > 2)
                 {
 
-                        label.Text = Convert.ToString(i + 7) + ":00 - " + Convert.ToString(i + 7) + ":30";
+                    label.Text = Convert.ToString(i + 7) + ":00 - " + Convert.ToString(i + 7) + ":30";
 
-                        labell.Text = Convert.ToString(i + 7) + ":30 - " + Convert.ToString(i + 8) + ":00";
+                    labell.Text = Convert.ToString(i + 7) + ":30 - " + Convert.ToString(i + 8) + ":00";
 
                 }
 
                 label.Left = 3;
-                label.Top = 6+(i-1)*62;
+                label.Top = 6 + (i - 1) * 62;
                 label.Font = new Font("Times New Roman", 8);
                 labell.Left = 3;
                 labell.Top = 36 + (i - 1) * 62;
@@ -115,22 +110,17 @@ namespace orvosirendelo
             label4.Text = (int.Parse(kezdet) + 6).ToString();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            moment = moment.AddDays(7);
+            Idokiiras();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
         {
             moment = moment.AddDays(-7);
             Idokiiras();
         }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            moment = moment.AddDays(7);
-            Idokiiras();
-
-        }
-
-
     }
-
-
-
-    }
-
+}

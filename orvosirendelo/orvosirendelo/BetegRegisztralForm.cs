@@ -166,7 +166,14 @@ namespace orvosirendelo
 
         private void textBoxJel1_Validating(object sender, CancelEventArgs e)
         {
-            if (egyezik==true )
+
+            JelszoKetto(e);
+            JelszoEgy(e);
+        }
+
+        private void JelszoEgy(CancelEventArgs e)
+        {
+            if (egyezik == true)
             {
                 e.Cancel = false;
 
@@ -187,13 +194,19 @@ namespace orvosirendelo
 
         private void textBoxJel2_Validating(object sender, CancelEventArgs e)
         {
-            if (textBoxJel1.Text==textBoxJel2.Text)
+            JelszoKetto(e);
+            JelszoEgy(e);
+        }
+
+        private void JelszoKetto(CancelEventArgs e)
+        {
+            if (textBoxJel1.Text == textBoxJel2.Text)
             {
                 e.Cancel = false;
 
                 if (!String.IsNullOrWhiteSpace(textBoxJel2.Text))
                     textBoxJel2.BackColor = Color.LightGreen;
-                    
+
                 else
                     textBoxJel2.BackColor = Color.White;
                 egyezik = true;
@@ -210,11 +223,11 @@ namespace orvosirendelo
             }
         }
 
-
-
         private void textBoxJel2_TextChanged(object sender, EventArgs e)
         {
             this.Validate();
+
+
 
         }
 

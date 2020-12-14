@@ -13,10 +13,10 @@ namespace orvosirendelo
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Database2Entities : DbContext
+    public partial class Database2Entities1 : DbContext
     {
-        public Database2Entities()
-            : base("name=Database2Entities")
+        public Database2Entities1()
+            : base("name=Database2Entities1")
         {
         }
     

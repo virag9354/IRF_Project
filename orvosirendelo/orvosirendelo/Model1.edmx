@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Database2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Database2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Betegek">
           <Key>
             <PropertyRef Name="BetegSK" />
@@ -33,6 +33,7 @@
           <Property Name="IdoFK" Type="int" />
           <Property Name="BetegFK" Type="int" />
           <Property Name="OrvosFK" Type="int" />
+          <Property Name="Panasz" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Orvosfajtak">
           <Key>
@@ -121,7 +122,8 @@
             <End Role="Orvosok" EntitySet="Orvosok" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Database2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -155,6 +157,7 @@
           <Property Name="IdoFK" Type="Int32" />
           <Property Name="BetegFK" Type="Int32" />
           <Property Name="OrvosFK" Type="Int32" />
+          <Property Name="Panasz" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Betegek" Relationship="Self.FK_Idopont_ToBetegek" FromRole="Idopont" ToRole="Betegek" />
           <NavigationProperty Name="Ido" Relationship="Self.FK_Idopont_ToIdo" FromRole="Idopont" ToRole="Ido" />
           <NavigationProperty Name="Orvosok" Relationship="Self.FK_Idopont_ToOrvosok" FromRole="Idopont" ToRole="Orvosok" />
@@ -174,9 +177,9 @@
           <Property Name="OrvosSK" Type="Int32" Nullable="false" />
           <Property Name="OrvosNev" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="OrvosfajtaFK" Type="Int32" />
+          <Property Name="Jelszo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Idoponts" Relationship="Self.FK_Idopont_ToOrvosok" FromRole="Orvosok" ToRole="Idopont" />
           <NavigationProperty Name="Orvosfajtak" Relationship="Self.FK_Orvosok_ToOrvosfajtak" FromRole="Orvosok" ToRole="Orvosfajtak" />
-          <Property Name="Jelszo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Idopont_ToBetegek">
           <End Role="Betegek" Type="Self.Betegek" Multiplicity="0..1" />
@@ -226,7 +229,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Database2Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Database2Entities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Betegeks" EntityType="Self.Betegek" />
           <EntitySet Name="Idoes" EntityType="Self.Ido" />
           <EntitySet Name="Idoponts" EntityType="Self.Idopont" />
@@ -254,7 +257,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Database2ModelStoreContainer" CdmEntityContainer="Database2Entities">
+        <EntityContainerMapping StorageEntityContainer="Database2ModelStoreContainer" CdmEntityContainer="Database2Entities1">
           <EntitySetMapping Name="Betegeks">
             <EntityTypeMapping TypeName="Database2Model.Betegek">
               <MappingFragment StoreEntitySet="Betegek">
@@ -284,6 +287,7 @@
                 <ScalarProperty Name="IdoFK" ColumnName="IdoFK" />
                 <ScalarProperty Name="BetegFK" ColumnName="BetegFK" />
                 <ScalarProperty Name="OrvosFK" ColumnName="OrvosFK" />
+                <ScalarProperty Name="Panasz" ColumnName="Panasz" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -298,10 +302,10 @@
           <EntitySetMapping Name="Orvosoks">
             <EntityTypeMapping TypeName="Database2Model.Orvosok">
               <MappingFragment StoreEntitySet="Orvosok">
-                <ScalarProperty Name="Jelszo" ColumnName="Jelszo" />
                 <ScalarProperty Name="OrvosSK" ColumnName="OrvosSK" />
                 <ScalarProperty Name="OrvosNev" ColumnName="OrvosNev" />
                 <ScalarProperty Name="OrvosfajtaFK" ColumnName="OrvosfajtaFK" />
+                <ScalarProperty Name="Jelszo" ColumnName="Jelszo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

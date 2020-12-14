@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,35 +14,59 @@ namespace orvosirendelo
 {
     public partial class OrvosForm : Form
     {
-        Database2Entities context = new Database2Entities();
+        Database2Entities1 context = new Database2Entities1();
         public OrvosForm()
         {
             InitializeComponent();
-            context.Orvosoks.Load();
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var orvosa = from o in context.Orvosoks
+
+            Orvosform2 of2= new Orvosform2();
+            of2.Show();
+
+
+            /*var orvosa = from o in context.Orvosoks
                         where o.OrvosNev == textBoxNev.Text
-                        select new { oaz=o.OrvosSK};
-            var jelszoa = from j in context.Orvosoks
-                          where j.Jelszo == textBoxJelszo.Text
-                          select new { jaz=j.OrvosSK};
-            MessageBox.Show(orvosa.ToString());
-            if (orvosa==jelszoa)
+                        select o;
+
+            foreach (var item in orvosa)
             {
-                MessageBox.Show("1");
-            }
+                // ha a felhasználónév nem jó
+                MessageBox.Show(item.OrvosNev);
+                if (item.OrvosNev!= null)
+                {
+                
+                    if (item.Jelszo==textBoxJelszo.Text)
+                    {
+                        MessageBox.Show("jó");
+                    }
+                    else
+                    {
+                        MessageBox.Show("hibás");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("nincs");
+                }*/
 
-            
-
-
-
-
-
-
-  
         }
+
+
+
+
+
+
+
+
+
+
+
+
+        
     }
 }

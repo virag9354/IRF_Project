@@ -15,18 +15,25 @@ namespace orvosirendelo
         public Form1()
         {
             InitializeComponent();
+            label1.BackColor = Color.FromArgb(237, 244, 247);
+            button1.BackColor = Color.FromArgb(237, 244, 247);
+            button2.BackColor = Color.FromArgb(237, 244, 247);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             OrvosForm of = new OrvosForm();
             of.Show();
+            this.Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             BetegForm bf1 = new BetegForm();
             bf1.Show();
+            this.Hide();
         }
+        
+
     }
 }

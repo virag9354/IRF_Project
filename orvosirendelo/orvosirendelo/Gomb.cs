@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,9 +10,27 @@ namespace orvosirendelo
 {
     public class Gomb: Button
     {
-        Database2Entities1 context = new Database2Entities1();
-        int orvose;
-        bool szabad;
+        public DateTime datum { get; set; }
+
+        public int idopont { get; set; }
+
+        private bool _kivalasztva;
+
+        public bool Kivalasztva
+        {
+            get { return _kivalasztva; }
+            set { _kivalasztva = value;
+                if (_kivalasztva)
+                {
+                    BackColor = Color.Yellow;
+                }
+                else
+                {
+                    BackColor = Color.Gray;
+                }
+            }
+        }
+
 
         public Gomb()
         {
@@ -19,7 +38,14 @@ namespace orvosirendelo
             Height = 25;
 
 
+            MouseDown += Gomb_MouseDown;
+            
+        }
 
-            }
+        private void Gomb_MouseDown(object sender, MouseEventArgs e)
+        {
+            Kivalasztva = true;
+
+        }
     }
 }

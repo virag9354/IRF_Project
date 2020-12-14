@@ -130,5 +130,17 @@ namespace orvosirendelo
             comboBox2.DisplayMember = "key";
             comboBox2.ValueMember = "value";
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            BetegForm bf = new BetegForm();
+            bf.Show();
+            this.Hide();
+        }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ namespace orvosirendelo
 {
     public partial class BetegRegisztralForm : Form
     {
+        Database2Entities1 context = new Database2Entities1();
         bool egyezik;
         public int hibas;
         public int hibas1=1;
@@ -26,7 +28,14 @@ namespace orvosirendelo
         public BetegRegisztralForm()
         {
             InitializeComponent();
+            context.Orvosfajtaks.Load();
+            context.Orvosoks.Load();
+            context.Idoes.Load();
+            context.Idoponts.Load();
+            context.Betegeks.Load();
             
+            
+
 
         }
 
@@ -40,6 +49,32 @@ namespace orvosirendelo
             }
             else
             {
+
+                Betegek person = new Betegek();
+
+                // Adatok feltöltése
+                person.BetegNev = nevTextBox.Text;
+                person.SZIG = textBoxSZIG.Text;
+                person.TAJ = textBoxTAJ.Text;
+                person.Email= emailTextBox.Text;
+                person.Telefonszám= telefonTextBox.Text;
+                person.Jelszo= textBoxJel2.Text;
+
+                context.Betegeks.Add(person);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message);
+                }
+                
+
+
+                // Rekord hozzáadása az adatforráshoz
+                //.Add(person);
 
                 BetegsegForm bf = new BetegsegForm();
                 bf.Show();
@@ -259,6 +294,18 @@ namespace orvosirendelo
         private void textBoxJel1_TextChanged(object sender, EventArgs e)
         {
             this.Validate();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            BetegForm bf = new BetegForm();
+            bf.Show();
+            this.Hide();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

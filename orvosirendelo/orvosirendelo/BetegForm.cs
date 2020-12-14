@@ -12,6 +12,7 @@ namespace orvosirendelo
 {
     public partial class BetegForm : Form
     {
+        Database2Entities1 context = new Database2Entities1();
         public BetegForm()
         {
             InitializeComponent();
@@ -21,16 +22,53 @@ namespace orvosirendelo
         {
             BetegRegisztralForm brf = new BetegRegisztralForm();
             brf.Show();
-            string iras;
-            iras = label1.Font.Height.ToString();
-            MessageBox.Show(iras);
+            this.Hide();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            BetegsegForm bf = new BetegsegForm();
-            bf.Show();
 
+           /* var betega = from o in context.Betegeks
+                        where o.BetegNev == textBox1.Text
+                        select o;
+
+            foreach (var item in betega)
+            {
+                // ha a felhasználónév nem jó
+                if (item.BetegNev != null)
+                {
+
+                    if (item.Jelszo == textBox2.Text)
+                    {
+                        MessageBox.Show("jó");*/
+
+                        BetegsegForm bf = new BetegsegForm();
+                        bf.Show();
+                        this.Hide();
+                    /*}
+                    else
+                    {
+                        MessageBox.Show("hibás");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("nincs");
+                }
+
+            }*/
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form1 f1 = new Form1();
+            f1.Show();
+            this.Hide();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

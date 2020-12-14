@@ -62,6 +62,8 @@ namespace orvosirendelo
 
 
 
+
+
             }
 
             // button kirakás
@@ -74,8 +76,12 @@ namespace orvosirendelo
 
                     btn.Top = 4 + j * 31;
                     btn.Left = 80 + i * 83;
+                    btn.Kivalasztva = false;
+                    //btn.datum=
+
 
                     panel1.Controls.Add(btn);
+
 
 
 
@@ -97,6 +103,8 @@ namespace orvosirendelo
 
 
         }
+
+
 
         private void Idokiiras()
         {
@@ -121,6 +129,20 @@ namespace orvosirendelo
         {
             moment = moment.AddDays(-7);
             Idokiiras();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            foreach (Gomb item in panel1.Controls.OfType<Gomb>())
+            {
+                if (item.Kivalasztva)
+                {
+                    //orvoselerheto ol new orvoselerheto()
+                    //ol.datum=item.datum ezt idővel is
+                    //context.Orvoselerheto.add(ol); try catch savechanges
+                }
+
+            }
         }
     }
 }

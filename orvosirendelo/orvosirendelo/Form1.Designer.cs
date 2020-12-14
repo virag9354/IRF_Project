@@ -35,7 +35,7 @@
             // 
             // label1
             // 
-            this.label1.BackColor = System.Drawing.Color.LightBlue;
+            this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.Location = new System.Drawing.Point(14, 14);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 2);
@@ -44,13 +44,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Ön orvos vagy páciens?\r\n";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+
             // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.LightBlue;
+            this.button1.BackColor = System.Drawing.Color.White;
             this.button1.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button1.Location = new System.Drawing.Point(12, 69);
             this.button1.Name = "button1";
@@ -65,7 +66,7 @@
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackColor = System.Drawing.Color.LightBlue;
+            this.button2.BackColor = System.Drawing.Color.White;
             this.button2.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button2.Location = new System.Drawing.Point(538, 69);
             this.button2.Name = "button2";

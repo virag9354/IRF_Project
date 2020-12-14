@@ -82,7 +82,7 @@ namespace orvosirendelo
 
                     panel1.Controls.Add(btn);
 
-
+                    
 
 
 

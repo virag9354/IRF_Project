@@ -27,6 +27,7 @@ namespace orvosirendelo
 
             Orvosform2 of2= new Orvosform2();
             of2.Show();
+            this.Hide();
 
 
             /*var orvosa = from o in context.Orvosoks
@@ -56,17 +57,16 @@ namespace orvosirendelo
 
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form1 f1 = new Form1();
+            f1.Show();
+        }
 
-
-
-
-
-
-
-
-
-
-
-        
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

@@ -49,29 +49,33 @@
             // 
             // panel1
             // 
+            this.panel1.AutoScroll = true;
+            this.panel1.BackColor = System.Drawing.Color.MintCream;
             this.panel1.Location = new System.Drawing.Point(4, 109);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(808, 988);
+            this.panel1.Size = new System.Drawing.Size(808, 434);
             this.panel1.TabIndex = 0;
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.White;
             this.button2.Location = new System.Drawing.Point(705, 17);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(30, 35);
             this.button2.TabIndex = 15;
             this.button2.Text = "<";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(741, 17);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(30, 35);
             this.button1.TabIndex = 14;
             this.button1.Text = ">";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // label4
@@ -103,6 +107,7 @@
             // 
             // label11
             // 
+            this.label11.BackColor = System.Drawing.Color.MintCream;
             this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label11.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label11.Location = new System.Drawing.Point(664, 75);
@@ -114,6 +119,7 @@
             // 
             // label10
             // 
+            this.label10.BackColor = System.Drawing.Color.MintCream;
             this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label10.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label10.Location = new System.Drawing.Point(553, 75);
@@ -125,6 +131,7 @@
             // 
             // label9
             // 
+            this.label9.BackColor = System.Drawing.Color.MintCream;
             this.label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label9.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label9.Location = new System.Drawing.Point(442, 75);
@@ -136,6 +143,7 @@
             // 
             // label8
             // 
+            this.label8.BackColor = System.Drawing.Color.MintCream;
             this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label8.Location = new System.Drawing.Point(331, 75);
@@ -147,6 +155,7 @@
             // 
             // label7
             // 
+            this.label7.BackColor = System.Drawing.Color.MintCream;
             this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label7.Location = new System.Drawing.Point(220, 76);
@@ -158,6 +167,7 @@
             // 
             // label6
             // 
+            this.label6.BackColor = System.Drawing.Color.MintCream;
             this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label6.Location = new System.Drawing.Point(109, 76);
@@ -169,6 +179,7 @@
             // 
             // label5
             // 
+            this.label5.BackColor = System.Drawing.Color.MintCream;
             this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label5.Location = new System.Drawing.Point(13, 76);
@@ -189,21 +200,23 @@
             // 
             // button3
             // 
+            this.button3.BackColor = System.Drawing.Color.White;
             this.button3.Location = new System.Drawing.Point(825, 414);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(118, 41);
             this.button3.TabIndex = 16;
             this.button3.Text = "Nem leszek";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
             // 
             // button4
             // 
+            this.button4.BackColor = System.Drawing.Color.White;
             this.button4.Location = new System.Drawing.Point(825, 318);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(118, 41);
             this.button4.TabIndex = 17;
             this.button4.Text = "Leszek";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label12
@@ -218,6 +231,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DarkGray;
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.label12);
@@ -236,7 +250,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
             this.Name = "OJelenletUserControl";
-            this.Size = new System.Drawing.Size(1099, 1120);
+            this.Size = new System.Drawing.Size(959, 584);
             this.ResumeLayout(false);
             this.PerformLayout();
 

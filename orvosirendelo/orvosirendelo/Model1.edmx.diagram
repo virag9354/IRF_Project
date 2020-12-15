@@ -14,7 +14,7 @@
         <AssociationConnector Association="Database2Model.FK_Idopont_ToIdo" ManuallyRouted="false" />
         <AssociationConnector Association="Database2Model.FK_Idopont_ToOrvosok" ManuallyRouted="false" />
         <AssociationConnector Association="Database2Model.FK_Orvosok_ToOrvosfajtak" ManuallyRouted="false" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

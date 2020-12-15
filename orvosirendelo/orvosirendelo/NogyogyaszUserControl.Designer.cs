@@ -102,6 +102,7 @@
             // 
             // label5
             // 
+            this.label5.BackColor = System.Drawing.Color.MintCream;
             this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label5.Location = new System.Drawing.Point(15, 71);
@@ -113,14 +114,16 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.LightGray;
+            this.panel1.AutoScroll = true;
+            this.panel1.BackColor = System.Drawing.Color.MintCream;
             this.panel1.Location = new System.Drawing.Point(3, 103);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(826, 532);
+            this.panel1.Size = new System.Drawing.Size(826, 348);
             this.panel1.TabIndex = 5;
             // 
             // label6
             // 
+            this.label6.BackColor = System.Drawing.Color.MintCream;
             this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label6.Location = new System.Drawing.Point(111, 71);
@@ -132,6 +135,7 @@
             // 
             // label7
             // 
+            this.label7.BackColor = System.Drawing.Color.MintCream;
             this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label7.Location = new System.Drawing.Point(222, 71);
@@ -143,6 +147,7 @@
             // 
             // label8
             // 
+            this.label8.BackColor = System.Drawing.Color.MintCream;
             this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label8.Location = new System.Drawing.Point(333, 70);
@@ -154,6 +159,7 @@
             // 
             // label9
             // 
+            this.label9.BackColor = System.Drawing.Color.MintCream;
             this.label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label9.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label9.Location = new System.Drawing.Point(444, 70);
@@ -165,6 +171,7 @@
             // 
             // label10
             // 
+            this.label10.BackColor = System.Drawing.Color.MintCream;
             this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label10.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label10.Location = new System.Drawing.Point(555, 70);
@@ -176,6 +183,7 @@
             // 
             // label11
             // 
+            this.label11.BackColor = System.Drawing.Color.MintCream;
             this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label11.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label11.Location = new System.Drawing.Point(666, 70);
@@ -205,7 +213,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label1);
             this.Name = "NogyogyaszUserControl";
-            this.Size = new System.Drawing.Size(870, 651);
+            this.Size = new System.Drawing.Size(870, 483);
             this.ResumeLayout(false);
             this.PerformLayout();
 

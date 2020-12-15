@@ -35,7 +35,7 @@
             // 
             // label1
             // 
-            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.BackColor = System.Drawing.Color.MintCream;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.Location = new System.Drawing.Point(14, 14);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 2);
@@ -44,7 +44,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Ön orvos vagy páciens?\r\n";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-
             // 
             // button1
             // 
@@ -80,7 +79,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.SteelBlue;
+            this.BackColor = System.Drawing.Color.MintCream;
             this.ClientSize = new System.Drawing.Size(1065, 284);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);

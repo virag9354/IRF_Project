@@ -30,5 +30,6 @@ namespace orvosirendelo
         public virtual DbSet<Idopont> Idoponts { get; set; }
         public virtual DbSet<Orvosfajtak> Orvosfajtaks { get; set; }
         public virtual DbSet<Orvosok> Orvosoks { get; set; }
+        public virtual DbSet<Orvosjelenlet> Orvosjelenlets { get; set; }
     }
 }

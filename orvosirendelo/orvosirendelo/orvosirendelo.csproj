@@ -123,12 +123,6 @@
     <Compile Include="Idopont.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="IdopontForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="IdopontForm.Designer.cs">
-      <DependentUpon>IdopontForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -171,11 +165,8 @@
     <Compile Include="Orvosform2.Designer.cs">
       <DependentUpon>Orvosform2.cs</DependentUpon>
     </Compile>
-    <Compile Include="OrvosJelenlet.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OrvosJelenlet.Designer.cs">
-      <DependentUpon>OrvosJelenlet.cs</DependentUpon>
+    <Compile Include="Orvosjelenlet.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Orvosok.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -201,9 +192,6 @@
     <EmbeddedResource Include="HaziorvosUserControl.resx">
       <DependentUpon>HaziorvosUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="IdopontForm.resx">
-      <DependentUpon>IdopontForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="NogyogyaszUserControl.resx">
       <DependentUpon>NogyogyaszUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -215,9 +203,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Orvosform2.resx">
       <DependentUpon>Orvosform2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="OrvosJelenlet.resx">
-      <DependentUpon>OrvosJelenlet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

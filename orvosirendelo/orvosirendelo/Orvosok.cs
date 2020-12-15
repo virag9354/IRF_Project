@@ -18,6 +18,7 @@ namespace orvosirendelo
         public Orvosok()
         {
             this.Idoponts = new HashSet<Idopont>();
+            this.Orvosjelenlets = new HashSet<Orvosjelenlet>();
         }
     
         public int OrvosSK { get; set; }
@@ -28,5 +29,7 @@ namespace orvosirendelo
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Idopont> Idoponts { get; set; }
         public virtual Orvosfajtak Orvosfajtak { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Orvosjelenlet> Orvosjelenlets { get; set; }
     }
 }

@@ -26,7 +26,7 @@ namespace orvosirendelo
 
             //Labelek kirakása
 
-            for (int i = 1; i < 20; i++)
+            for (int i = 1; i < 12; i++)
             {
                 Cimke label = new Cimke();
                 Cimke labell = new Cimke();
@@ -73,7 +73,7 @@ namespace orvosirendelo
 
             for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < 24; j++)
+                for (int j = 0; j < 22; j++)
                 {
                     Gomb btn = new Gomb();
 
@@ -88,17 +88,6 @@ namespace orvosirendelo
 
                 }
             }
-
-
-            ScrollBar vScrollBar1 = new VScrollBar();
-            vScrollBar1.Dock = DockStyle.Right;
-            vScrollBar1.Scroll += (sender, e) => { panel1.VerticalScroll.Value = vScrollBar1.Value; };
-            panel1.Controls.Add(vScrollBar1);
-
-
-
-
-
 
 
         }

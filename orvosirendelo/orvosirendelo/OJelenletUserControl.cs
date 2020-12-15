@@ -12,6 +12,7 @@ namespace orvosirendelo
 {
     public partial class OJelenletUserControl : UserControl
     {
+        Database2Entities1 context = new Database2Entities1();
         DateTime moment = DateTime.Now;
         string kezdet;
         public OJelenletUserControl()
@@ -19,9 +20,10 @@ namespace orvosirendelo
             InitializeComponent();
             Idokiiras();
 
+
             //Labelek kirakása
 
-            for (int i = 1; i < 20; i++)
+            for (int i = 1; i < 12; i++)
             {
                 Cimke label = new Cimke();
                 Cimke labell = new Cimke();
@@ -60,47 +62,27 @@ namespace orvosirendelo
                 panel1.Controls.Add(label);
                 panel1.Controls.Add(labell);
 
-
-
-
-
             }
 
             // button kirakás
 
             for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < 24; j++)
+                for (int j = 0; j < 22; j++)
                 {
                     Gomb btn = new Gomb();
 
                     btn.Top = 4 + j * 31;
                     btn.Left = 80 + i * 83;
                     btn.Kivalasztva = false;
-                    //btn.datum=
+                    btn.datum = moment.Date;
 
 
                     panel1.Controls.Add(btn);
 
 
-
-
-
-
                 }
             }
-
-
-            ScrollBar vScrollBar1 = new VScrollBar();
-            vScrollBar1.Dock = DockStyle.Right;
-            vScrollBar1.Scroll += (sender, e) => { panel1.VerticalScroll.Value = vScrollBar1.Value; };
-            panel1.Controls.Add(vScrollBar1);
-
-
-
-
-
-
 
         }
 
@@ -137,9 +119,24 @@ namespace orvosirendelo
             {
                 if (item.Kivalasztva)
                 {
-                    //orvoselerheto ol new orvoselerheto()
-                    //ol.datum=item.datum ezt idővel is
-                    //context.Orvoselerheto.add(ol); try catch savechanges
+                    Orvosjelenlet oj = new Orvosjelenlet();
+                    //oj.Orvosok.OrvosNev = felhasznalonev;
+                    oj.Datum = item.datum;
+                    oj.IdoFK = item.idopont;
+                    oj.szabad = "szabad";
+
+                    context.Orvosjelenlets.Add(oj);
+
+                    try
+                    {
+                        context.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show(ex.Message);
+                    }
+
                 }
 
             }

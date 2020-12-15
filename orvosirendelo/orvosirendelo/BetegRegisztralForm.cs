@@ -53,6 +53,7 @@ namespace orvosirendelo
                 Betegek person = new Betegek();
 
                 // Adatok feltöltése
+
                 person.BetegNev = nevTextBox.Text;
                 person.SZIG = textBoxSZIG.Text;
                 person.TAJ = textBoxTAJ.Text;
@@ -306,6 +307,11 @@ namespace orvosirendelo
         private void button4_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -12,7 +12,7 @@ namespace orvosirendelo
 {
     public partial class OJelenletUserControl : UserControl
     {
-        Database2Entities2 context = new Database2Entities2();
+        Database2Entities3 context = new Database2Entities3();
         DateTime moment = DateTime.Now;
         string kezdet;
         public OJelenletUserControl(string felhasznalonev)
@@ -153,7 +153,7 @@ namespace orvosirendelo
                     
                     oj.Datum = item.datum;
                     //oj.IdoFK = item.idopont;
-                    oj.szabad = "szabad";
+                    //oj.szabad = "szabad";
 
                     context.Orvosjelenlets.Add(oj);
 

@@ -220,14 +220,13 @@
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(847, 415);
+            this.button3.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button3.Location = new System.Drawing.Point(839, 280);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(124, 36);
-            this.button3.TabIndex = 33;
-            this.button3.Text = "Időpontfoglalás";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Size = new System.Drawing.Size(132, 67);
+            this.button3.TabIndex = 9;
+            this.button3.Text = "Időpont foglaláshoz hívja a 06 / 1 123 123";
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // NogyogyaszUserControl
             // 

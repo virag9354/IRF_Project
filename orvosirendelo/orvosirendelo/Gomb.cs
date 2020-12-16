@@ -10,7 +10,7 @@ namespace orvosirendelo
 {
     public class Gomb: Button
     {
-        Database2Entities2 context = new Database2Entities2();
+        Database2Entities3 context = new Database2Entities3();
         public DateTime datum { get; set; }
 
         public int ido { get; set; }
@@ -38,8 +38,6 @@ namespace orvosirendelo
         {
             Width = 82;
             Height = 25;
-
-
 
             MouseDown += Gomb_MouseDown;
             

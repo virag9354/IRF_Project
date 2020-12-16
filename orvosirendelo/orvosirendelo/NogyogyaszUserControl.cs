@@ -15,7 +15,7 @@ namespace orvosirendelo
     {
         DateTime moment = DateTime.Now;
         string kezdet;
-        Database2Entities2 context = new Database2Entities2();
+        Database2Entities3 context = new Database2Entities3();
 
 
         public NogyogyaszUserControl()
@@ -79,10 +79,39 @@ namespace orvosirendelo
 
                     btn.Top = 4 + j * 31;
                     btn.Left = 80 + i * 83;
+
+                    int naph = int.Parse(moment.DayOfWeek.ToString("d"));
+                    DateTime hetfo = moment.AddDays(-naph + 1);
+
+                    btn.datum = hetfo.AddDays(i).Date;
+                    btn.ido = j + 1;
+
                     if (i<4)
                     {
                         btn.BackColor = Color.Tan;
                         btn.orvosszam = 6;
+                        var foglalt = (from f in context.Idoponts
+                                       where f.OrvosFK == 6 &&
+                                       f.IdoFK == j + 1 &&
+                                       f.Datum == btn.datum
+                                       select f );
+
+                        int counter = 0;
+                        foreach (var item in foglalt)
+                        {
+
+                            if (item.IdoFK!=null)
+                            {
+                                counter++;
+                            }
+                        }
+
+
+                        if (counter>0)
+                        {
+                            btn.BackColor = Color.Red;
+                        }
+                        
                     }
                     else if (i>3)
                     {
@@ -92,25 +121,17 @@ namespace orvosirendelo
                     if (j == 8)
                     {
                         btn.BackColor = Color.Gray;
-                        btn.Enabled = true;
+                        btn.Enabled = false;
                     }
                     else if (j==9)
                     {
                         btn.BackColor = Color.Gray;
-                        btn.Enabled = true;
+                        btn.Enabled = false;
                     }
 
                     panel1.Controls.Add(btn);
 
-                    int naph = int.Parse(moment.DayOfWeek.ToString("d"));
-                    DateTime hetfo = moment.AddDays(-naph + 1);
-
-                    btn.datum = hetfo.AddDays(i);
-                    btn.ido = j + 1;
-
                     
-
-
 
 
 
@@ -147,9 +168,9 @@ namespace orvosirendelo
         private void button3_Click(object sender, EventArgs e)
         {
             Idopont ip = new Idopont();
-        //    ip.IdoFK = btn.ido;
-        //    ip.Datum = btn.datum;
-        //    ip.OrvosFK = btn.orvosszam;
+            //ip.IdoFK = btn.ido;
+            //ip.Datum = btn.datum;
+            //ip.OrvosFK = btn.orvosszam;
 
             context.Idoponts.Add(ip);
 
@@ -163,6 +184,8 @@ namespace orvosirendelo
                 MessageBox.Show(ex.Message);
             }
         }
+
+
     }
 
 

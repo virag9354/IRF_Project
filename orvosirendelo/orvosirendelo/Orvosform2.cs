@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,13 +13,18 @@ namespace orvosirendelo
 {
     public partial class Orvosform2 : Form
     {
-        Database2Entities2 context = new Database2Entities2();
+
+
+        Database2Entities3 context = new Database2Entities3();
+
+        BindingList<DgElemek> dge = new BindingList<DgElemek>();
+
         DateTime moment = DateTime.Now;
         public Orvosform2(string felhasznalonev)
         {
             InitializeComponent();
             label1.Text = felhasznalonev;
-            
+            dataGridView1.DataSource = dge;
 
         }
 
@@ -47,37 +53,59 @@ namespace orvosirendelo
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Comma Seperated Values (*.csv)|*.csv";
+            sfd.DefaultExt = "csv";
+            sfd.AddExtension = true;
+            if (sfd.ShowDialog() != DialogResult.OK) return;
+            {
+                using (StreamWriter sw = new StreamWriter(sfd.FileName, false, Encoding.UTF8))
+                {
+                    sw.Write("Időpont");
+                    sw.Write(";");
+                    sw.Write("Páciens");
+                    sw.Write(";");
+                    sw.Write("TAJ");
+                    sw.WriteLine();
+                    
+                    foreach (var s in dge)
+                    {
+                        sw.Write(s.Idopont);
+                        sw.Write(";");
+                        sw.Write(s.Paciens);
+                        sw.Write(";");
+                        sw.Write(s.Taj);
+                        sw.WriteLine();
+                    }
+                }
+            }
         }
 
         private void Orvosform2_Load(object sender, EventArgs e)
         {
+            comboBox1.Items.Add("2020.12.14.");
+            comboBox1.Items.Add("2020.12.15.");
 
-            comboBox1.Items.Add(new KeyValuePair<string, string>("2020.12.14", "1"));
-            comboBox1.Items.Add(new KeyValuePair<string, string>("2020.12.15", "2"));
-
-            comboBox1.DisplayMember = "key";
-            comboBox1.ValueMember = "value";
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            string combodate= comboBox1.SelectedItem.ToString();
+            DateTime combodate= DateTime.Parse(comboBox1.SelectedItem.ToString());
 
             var alkalom = from a in context.Idoponts
-                          where a.Datum.ToString() == combodate
+                          where a.Datum == combodate
 
-                          select new
+                          select new DgElemek
                           {
                               
                               Idopont=a.Ido.Idotartam,
-                              Páciens=a.Betegek.BetegNev,
-
+                              Paciens=a.Betegek.BetegNev,
+                              Taj=a.Betegek.TAJ,
 
                           };
-            dataGridView1.DataSource = alkalom.ToList();
-
+            dge = new BindingList<DgElemek>(alkalom.ToList());
+            dataGridView1.DataSource = dge;
         }
     }
 }

@@ -14,7 +14,7 @@ namespace orvosirendelo
 {
     public partial class BetegRegisztralForm : Form
     {
-        Database2Entities2 context = new Database2Entities2();
+        Database2Entities3 context = new Database2Entities3();
         bool egyezik;
         public int hibas;
         public int hibas1=1;
@@ -54,6 +54,12 @@ namespace orvosirendelo
 
                 // Adatok feltöltése
 
+                var id = (from i in context.Betegeks
+                          select i.BetegSK).Max();
+
+
+
+                person.BetegSK = id + 1;
                 person.BetegNev = nevTextBox.Text;
                 person.SZIG = textBoxSZIG.Text;
                 person.TAJ = textBoxTAJ.Text;

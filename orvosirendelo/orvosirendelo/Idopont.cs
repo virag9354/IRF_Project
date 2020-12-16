@@ -19,7 +19,6 @@ namespace orvosirendelo
         public Nullable<int> IdoFK { get; set; }
         public Nullable<int> BetegFK { get; set; }
         public Nullable<int> OrvosFK { get; set; }
-        public string Panasz { get; set; }
     
         public virtual Betegek Betegek { get; set; }
         public virtual Ido Ido { get; set; }

@@ -17,7 +17,7 @@ namespace orvosirendelo
     {
 
 
-        Database2Entities2 context = new Database2Entities2();
+        Database2Entities3 context = new Database2Entities3();
         public OrvosForm()
         {
             InitializeComponent();
@@ -38,7 +38,7 @@ namespace orvosirendelo
 
 
            
-            foreach (var item in orvosa)
+            /*foreach (var item in orvosa)
             {
                 // ha a felhasználónév nem jó
                 // MessageBox.Show(item.OrvosNev);
@@ -58,13 +58,13 @@ namespace orvosirendelo
                 else
                 {
                     MessageBox.Show("nincs");
-                }
+                }*/
                 Orvosform2 of2 = new Orvosform2(felhasznalonev);
                 of2.Show();
                 this.Hide();
 
 
-            }
+            //}
         }   
 
         private void button2_Click(object sender, EventArgs e)

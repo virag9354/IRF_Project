@@ -28,12 +28,11 @@
           <Key>
             <PropertyRef Name="IdopontSK" />
           </Key>
-          <Property Name="IdopontSK" Type="int" Nullable="false" />
-          <Property Name="Datum" Type="datetime" />
+          <Property Name="IdopontSK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Datum" Type="date" />
           <Property Name="IdoFK" Type="int" />
           <Property Name="BetegFK" Type="int" />
           <Property Name="OrvosFK" Type="int" />
-          <Property Name="Panasz" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Orvosfajtak">
           <Key>
@@ -46,11 +45,10 @@
           <Key>
             <PropertyRef Name="OrvosjelenletSK" />
           </Key>
-          <Property Name="OrvosjelenletSK" Type="int" Nullable="false" />
+          <Property Name="OrvosjelenletSK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OrvosFK" Type="int" />
           <Property Name="Datum" Type="date" />
           <Property Name="IdoFK" Type="int" />
-          <Property Name="szabad" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Orvosok">
           <Key>
@@ -196,12 +194,11 @@
           <Key>
             <PropertyRef Name="IdopontSK" />
           </Key>
-          <Property Name="IdopontSK" Type="Int32" Nullable="false" />
-          <Property Name="Datum" Type="DateTime" Precision="3" />
+          <Property Name="IdopontSK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Datum" Type="DateTime" Precision="0" />
           <Property Name="IdoFK" Type="Int32" />
           <Property Name="BetegFK" Type="Int32" />
           <Property Name="OrvosFK" Type="Int32" />
-          <Property Name="Panasz" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Betegek" Relationship="Self.FK_Idopont_ToBetegek" FromRole="Idopont" ToRole="Betegek" />
           <NavigationProperty Name="Ido" Relationship="Self.FK_Idopont_ToIdo" FromRole="Idopont" ToRole="Ido" />
           <NavigationProperty Name="Orvosok" Relationship="Self.FK_Idopont_ToOrvosok" FromRole="Idopont" ToRole="Orvosok" />
@@ -218,11 +215,10 @@
           <Key>
             <PropertyRef Name="OrvosjelenletSK" />
           </Key>
-          <Property Name="OrvosjelenletSK" Type="Int32" Nullable="false" />
+          <Property Name="OrvosjelenletSK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OrvosFK" Type="Int32" />
           <Property Name="Datum" Type="DateTime" Precision="0" />
           <Property Name="IdoFK" Type="Int32" />
-          <Property Name="szabad" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Ido" Relationship="Self.FK_Orvosjelenlet_Ido" FromRole="Orvosjelenlet" ToRole="Ido" />
           <NavigationProperty Name="Orvosok" Relationship="Self.FK_Orvosjelenlet_Orvosok" FromRole="Orvosjelenlet" ToRole="Orvosok" />
         </EntityType>
@@ -310,7 +306,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Database2Entities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Database2Entities3" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Betegeks" EntityType="Self.Betegek" />
           <EntitySet Name="Idoes" EntityType="Self.Ido" />
           <EntitySet Name="Idoponts" EntityType="Self.Idopont" />
@@ -347,7 +343,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Database2ModelStoreContainer" CdmEntityContainer="Database2Entities2">
+        <EntityContainerMapping StorageEntityContainer="Database2ModelStoreContainer" CdmEntityContainer="Database2Entities3">
           <EntitySetMapping Name="Betegeks">
             <EntityTypeMapping TypeName="Database2Model.Betegek">
               <MappingFragment StoreEntitySet="Betegek">
@@ -377,7 +373,6 @@
                 <ScalarProperty Name="IdoFK" ColumnName="IdoFK" />
                 <ScalarProperty Name="BetegFK" ColumnName="BetegFK" />
                 <ScalarProperty Name="OrvosFK" ColumnName="OrvosFK" />
-                <ScalarProperty Name="Panasz" ColumnName="Panasz" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -396,7 +391,6 @@
                 <ScalarProperty Name="OrvosFK" ColumnName="OrvosFK" />
                 <ScalarProperty Name="Datum" ColumnName="Datum" />
                 <ScalarProperty Name="IdoFK" ColumnName="IdoFK" />
-                <ScalarProperty Name="szabad" ColumnName="szabad" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

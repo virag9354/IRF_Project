@@ -18,7 +18,6 @@ namespace orvosirendelo
         public Nullable<int> OrvosFK { get; set; }
         public Nullable<System.DateTime> Datum { get; set; }
         public Nullable<int> IdoFK { get; set; }
-        public string szabad { get; set; }
     
         public virtual Ido Ido { get; set; }
         public virtual Orvosok Orvosok { get; set; }

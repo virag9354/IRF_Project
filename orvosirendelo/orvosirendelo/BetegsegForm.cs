@@ -28,7 +28,7 @@ namespace orvosirendelo
 
         private void BetegsegForm_Load(object sender, EventArgs e)
         {
-            comboBox1.Items.Add(new KeyValuePair<string, string>("Válasszon", "0"));
+
             comboBox1.Items.Add(new KeyValuePair<string, string>("Háziorvos", "1"));
             comboBox1.Items.Add(new KeyValuePair<string, string>("Bőrgyógyász", "2"));
             comboBox1.Items.Add(new KeyValuePair<string, string>("Nőgyógyász", "3"));

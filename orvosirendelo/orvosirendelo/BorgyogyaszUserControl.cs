@@ -187,13 +187,16 @@ namespace orvosirendelo
         private void button2_Click(object sender, EventArgs e)
         {
             moment = moment.AddDays(-7);
+            panel1.Controls.Clear();
             Idokiiras();
+
             GombKirakas();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             moment = moment.AddDays(7);
+            panel1.Controls.Clear();
             Idokiiras();
             GombKirakas();
         }

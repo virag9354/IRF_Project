@@ -89,9 +89,9 @@
             this.label13.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label13.Location = new System.Drawing.Point(851, 204);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(136, 21);
+            this.label13.Size = new System.Drawing.Size(157, 21);
             this.label13.TabIndex = 43;
-            this.label13.Text = "Dr. Rajkóczi Zita";
+            this.label13.Text = "Dr. Cserepes Etelka";
             // 
             // label12
             // 
@@ -100,9 +100,9 @@
             this.label12.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label12.Location = new System.Drawing.Point(851, 168);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(136, 21);
+            this.label12.Size = new System.Drawing.Size(131, 21);
             this.label12.TabIndex = 42;
-            this.label12.Text = "Dr. Pataki Gábor";
+            this.label12.Text = "Dr. Farkas Viola";
             // 
             // panel1
             // 

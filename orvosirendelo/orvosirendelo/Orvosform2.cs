@@ -28,16 +28,6 @@ namespace orvosirendelo
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            string felhasznalonev = label1.Text;
-            panel1.Controls.Clear();
-            OJelenletUserControl ouc = new OJelenletUserControl(felhasznalonev);
-            panel1.Controls.Add(ouc);
-            ouc.Dock = DockStyle.Fill;
-
-
-        }
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -83,8 +73,38 @@ namespace orvosirendelo
 
         private void Orvosform2_Load(object sender, EventArgs e)
         {
-            comboBox1.Items.Add("2020.12.14.");
-            comboBox1.Items.Add("2020.12.15.");
+            if (label1.Text=="Dr. Farkas Viola")
+            {
+                comboBox1.Items.Add("2020.12.14.");
+                comboBox1.Items.Add("2020.12.15.");
+            }
+            else if (label1.Text == "Dr. Cserepes Etelka")
+            {
+                comboBox1.Items.Add("2020.12.17.");
+                comboBox1.Items.Add("2020.12.19.");
+            }
+            else if (label1.Text == "Dr. Csömöri Márta")
+            {
+                comboBox1.Items.Add("2020.12.15.");
+                comboBox1.Items.Add("2020.12.16.");
+            }
+            else if (label1.Text == "Dr. Újházy Klára")
+            {
+                comboBox1.Items.Add("2020.12.17.");
+                comboBox1.Items.Add("2020.12.18.");
+            }
+            else if (label1.Text == "Dr. Pataki Gábor")
+            {
+                comboBox1.Items.Add("2020.12.18.");
+                comboBox1.Items.Add("2020.12.19.");
+            }
+            else if (label1.Text == "Dr. Rajkóczi Zita")
+            {
+                comboBox1.Items.Add("2020.12.14.");
+                comboBox1.Items.Add("2020.12.15.");
+                comboBox1.Items.Add("2020.12.16.");
+                comboBox1.Items.Add("2020.12.17.");
+            }
 
         }
 
@@ -94,7 +114,8 @@ namespace orvosirendelo
             DateTime combodate= DateTime.Parse(comboBox1.SelectedItem.ToString());
 
             var alkalom = from a in context.Idoponts
-                          where a.Datum == combodate
+                          where a.Datum == combodate && 
+                          a.Orvosok.OrvosNev == label1.Text
 
                           select new DgElemek
                           {

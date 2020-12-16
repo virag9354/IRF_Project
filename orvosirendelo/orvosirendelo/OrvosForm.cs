@@ -38,10 +38,10 @@ namespace orvosirendelo
 
 
            
-            /*foreach (var item in orvosa)
+            foreach (var item in orvosa)
             {
                 // ha a felhasználónév nem jó
-                // MessageBox.Show(item.OrvosNev);
+
                 if (item.OrvosNev != null)
                 {
 
@@ -52,19 +52,16 @@ namespace orvosirendelo
                     }
                     else
                     {
-                        MessageBox.Show("hibás");
+                        
                     }
                 }
-                else
-                {
-                    MessageBox.Show("nincs");
-                }*/
+                
                 Orvosform2 of2 = new Orvosform2(felhasznalonev);
                 of2.Show();
                 this.Hide();
 
 
-            //}
+            }
         }   
 
         private void button2_Click(object sender, EventArgs e)
@@ -74,7 +71,15 @@ namespace orvosirendelo
             f1.Show();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            Form1 f1 = new Form1();
+            f1.Show();
+            this.Hide();
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
         {
             Application.Exit();
         }

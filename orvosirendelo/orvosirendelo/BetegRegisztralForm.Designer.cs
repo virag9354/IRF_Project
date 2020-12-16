@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label4 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.textBoxJel1 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -47,15 +46,6 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(75, 389);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(400, 17);
-            this.label4.TabIndex = 28;
-            this.label4.Text = "Figyelmezteteés hogy már van ilyen nevű ilyen jelszavú ember";
             // 
             // button3
             // 
@@ -240,7 +230,6 @@
             this.ControlBox = false;
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.textBoxJel2);
             this.Controls.Add(this.label8);
@@ -264,8 +253,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox textBoxJel1;
         private System.Windows.Forms.Label label5;

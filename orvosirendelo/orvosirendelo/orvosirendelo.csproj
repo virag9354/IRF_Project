@@ -145,12 +145,6 @@
     <Compile Include="NogyogyaszUserControl.Designer.cs">
       <DependentUpon>NogyogyaszUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="OJelenletUserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="OJelenletUserControl.Designer.cs">
-      <DependentUpon>OJelenletUserControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="Orvosfajtak.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -195,9 +189,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NogyogyaszUserControl.resx">
       <DependentUpon>NogyogyaszUserControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="OJelenletUserControl.resx">
-      <DependentUpon>OJelenletUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OrvosForm.resx">
       <DependentUpon>OrvosForm.cs</DependentUpon>

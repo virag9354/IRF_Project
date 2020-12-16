@@ -28,7 +28,7 @@ namespace orvosirendelo
         private void button1_Click(object sender, EventArgs e)
         {
 
-           /* var betega = from o in context.Betegeks
+           var betega = from o in context.Betegeks
                         where o.BetegNev == textBox1.Text
                         select o;
 
@@ -40,23 +40,23 @@ namespace orvosirendelo
 
                     if (item.Jelszo == textBox2.Text)
                     {
-                        MessageBox.Show("jó");*/
+                        
 
                         BetegsegForm bf = new BetegsegForm();
                         bf.Show();
                         this.Hide();
-                    /*}
+                    }
                     else
                     {
-                        MessageBox.Show("hibás");
+                        
                     }
                 }
                 else
                 {
-                    MessageBox.Show("nincs");
+                    
                 }
 
-            }*/
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)

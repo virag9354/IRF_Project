@@ -23,15 +23,19 @@ namespace orvosirendelo
             InitializeComponent();
 
             Idokiiras();
+            LabelKirakas();
+            GombKirakas();
 
-            //Labelek kirakása
+        }
 
+        private void LabelKirakas()
+        {
             for (int i = 1; i < 10; i++)
             {
                 Cimke label = new Cimke();
                 Cimke labell = new Cimke();
 
-                if (i==1)
+                if (i == 1)
                 {
 
                     label.Text = Convert.ToString(0) + Convert.ToString(i + 7) + ":00 - 0" + Convert.ToString(i + 7) + ":30";
@@ -42,22 +46,22 @@ namespace orvosirendelo
                 else if (i == 2)
                 {
 
-                        label.Text = Convert.ToString(0) + Convert.ToString(i + 7) + ":00 - 0" + Convert.ToString(i + 7) + ":30";
+                    label.Text = Convert.ToString(0) + Convert.ToString(i + 7) + ":00 - 0" + Convert.ToString(i + 7) + ":30";
 
-                        labell.Text = Convert.ToString(0) + Convert.ToString(i + 7) + ":30 - " + Convert.ToString(i + 8) + ":00";
+                    labell.Text = Convert.ToString(0) + Convert.ToString(i + 7) + ":30 - " + Convert.ToString(i + 8) + ":00";
 
                 }
-                else if (i>2)
+                else if (i > 2)
                 {
 
-                        label.Text = Convert.ToString(i + 7) + ":00 - " + Convert.ToString(i + 7) + ":30";
+                    label.Text = Convert.ToString(i + 7) + ":00 - " + Convert.ToString(i + 7) + ":30";
 
-                        labell.Text = Convert.ToString(i + 7) + ":30 - " + Convert.ToString(i + 8) + ":00";
+                    labell.Text = Convert.ToString(i + 7) + ":30 - " + Convert.ToString(i + 8) + ":00";
 
                 }
 
                 label.Left = 3;
-                label.Top = 6+(i-1)*62;
+                label.Top = 6 + (i - 1) * 62;
                 label.Font = new Font("Times New Roman", 8);
                 labell.Left = 3;
                 labell.Top = 36 + (i - 1) * 62;
@@ -65,12 +69,11 @@ namespace orvosirendelo
                 panel1.Controls.Add(label);
                 panel1.Controls.Add(labell);
 
-
-
             }
+        }
 
-            // button kirakás
-
+        private void GombKirakas()
+        {
             for (int i = 0; i < 6; i++)
             {
                 for (int j = 0; j < 18; j++)
@@ -85,8 +88,12 @@ namespace orvosirendelo
 
                     btn.datum = hetfo.AddDays(i).Date;
                     btn.ido = j + 1;
-
-                    if (i<4)
+                    if (i+1==4)
+                    {
+                        btn.BackColor = Color.Gray;
+                        btn.Enabled = false;
+                    }
+                    else if (i < 4)
                     {
                         btn.BackColor = Color.Tan;
                         btn.orvosszam = 6;
@@ -94,36 +101,59 @@ namespace orvosirendelo
                                        where f.OrvosFK == 6 &&
                                        f.IdoFK == j + 1 &&
                                        f.Datum == btn.datum
-                                       select f );
+                                       select f);
 
                         int counter = 0;
                         foreach (var item in foglalt)
                         {
 
-                            if (item.IdoFK!=null)
+                            if (item.IdoFK != null)
                             {
                                 counter++;
                             }
                         }
 
 
-                        if (counter>0)
+                        if (counter > 0)
                         {
                             btn.BackColor = Color.Red;
                         }
-                        
+
                     }
-                    else if (i>3)
+                    else if (i > 3)
                     {
                         btn.BackColor = Color.LightBlue;
                         btn.orvosszam = 5;
+
+                        var foglalt = (from f in context.Idoponts
+                                       where f.OrvosFK == 5 &&
+                                       f.IdoFK == j + 1 &&
+                                       f.Datum == btn.datum
+                                       select f);
+
+                        int counter = 0;
+                        foreach (var item in foglalt)
+                        {
+
+                            if (item.IdoFK != null)
+                            {
+                                counter++;
+                            }
+                        }
+
+
+                        if (counter > 0)
+                        {
+                            btn.BackColor = Color.Red;
+                        }
+
                     }
                     if (j == 8)
                     {
                         btn.BackColor = Color.Gray;
                         btn.Enabled = false;
                     }
-                    else if (j==9)
+                    else if (j == 9)
                     {
                         btn.BackColor = Color.Gray;
                         btn.Enabled = false;
@@ -131,14 +161,12 @@ namespace orvosirendelo
 
                     panel1.Controls.Add(btn);
 
-                    
+
 
 
 
                 }
             }
-
-
         }
 
         private void Idokiiras()
@@ -157,38 +185,21 @@ namespace orvosirendelo
         {
             moment = moment.AddDays(-7);
             Idokiiras();
+            GombKirakas();
+            
         }
         private void button1_Click(object sender, EventArgs e)
         {
             moment = moment.AddDays(7);
             Idokiiras();
+            GombKirakas();
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Idopont ip = new Idopont();
-            //ip.IdoFK = btn.ido;
-            //ip.Datum = btn.datum;
-            //ip.OrvosFK = btn.orvosszam;
-
-            context.Idoponts.Add(ip);
-
-            try
-            {
-                context.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-
     }
+}
 
 
 
-    }
+
 

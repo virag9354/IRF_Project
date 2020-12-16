@@ -14,7 +14,7 @@ namespace orvosirendelo
 {
     public partial class BetegRegisztralForm : Form
     {
-        Database2Entities1 context = new Database2Entities1();
+        Database2Entities2 context = new Database2Entities2();
         bool egyezik;
         public int hibas;
         public int hibas1=1;

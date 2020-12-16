@@ -12,13 +12,14 @@ namespace orvosirendelo
 {
     public partial class OJelenletUserControl : UserControl
     {
-        Database2Entities1 context = new Database2Entities1();
+        Database2Entities2 context = new Database2Entities2();
         DateTime moment = DateTime.Now;
         string kezdet;
-        public OJelenletUserControl()
+        public OJelenletUserControl(string felhasznalonev)
         {
             InitializeComponent();
             Idokiiras();
+            label12.Text = felhasznalonev;
 
 
             //Labelek kirakása
@@ -119,10 +120,39 @@ namespace orvosirendelo
             {
                 if (item.Kivalasztva)
                 {
+                    string felhasznalonev = label12.Text;
                     Orvosjelenlet oj = new Orvosjelenlet();
-                    //oj.Orvosok.OrvosNev = felhasznalonev;
+                    if (felhasznalonev== "Dr.Farkas Viola")
+                    {
+                        oj.OrvosFK = 1;
+                        MessageBox.Show(felhasznalonev);
+                        MessageBox.Show(item.datum.ToString());
+                    }
+                    else if (felhasznalonev=="Dr. Cserepes Etelka")
+                    {
+                        oj.OrvosFK = 2;
+                        MessageBox.Show(felhasznalonev);
+                    }
+                    else if (felhasznalonev=="Dr. Csömöri Márta")
+                    {
+                        oj.OrvosFK = 3;
+                    }
+                    else if (felhasznalonev == "Dr. Újházy Klára")
+                    {
+                        oj.OrvosFK = 4;
+                    }
+                    else if (felhasznalonev == "Dr. Pataki Gábor")
+                    {
+                        oj.OrvosFK = 5;
+                    }
+                    else if (felhasznalonev == "Dr. Rajkóczi Zita")
+                    {
+                        oj.OrvosFK = 6;
+                    }
+
+                    
                     oj.Datum = item.datum;
-                    oj.IdoFK = item.idopont;
+                    //oj.IdoFK = item.idopont;
                     oj.szabad = "szabad";
 
                     context.Orvosjelenlets.Add(oj);

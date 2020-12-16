@@ -12,6 +12,7 @@ namespace orvosirendelo
 {
     public partial class Orvosform2 : Form
     {
+        Database2Entities2 context = new Database2Entities2();
         DateTime moment = DateTime.Now;
         public Orvosform2(string felhasznalonev)
         {
@@ -23,8 +24,9 @@ namespace orvosirendelo
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string felhasznalonev = label1.Text;
             panel1.Controls.Clear();
-            OJelenletUserControl ouc = new OJelenletUserControl();
+            OJelenletUserControl ouc = new OJelenletUserControl(felhasznalonev);
             panel1.Controls.Add(ouc);
             ouc.Dock = DockStyle.Fill;
 
@@ -50,6 +52,31 @@ namespace orvosirendelo
 
         private void Orvosform2_Load(object sender, EventArgs e)
         {
+
+            comboBox1.Items.Add(new KeyValuePair<string, string>("2020.12.14", "1"));
+            comboBox1.Items.Add(new KeyValuePair<string, string>("2020.12.15", "2"));
+
+            comboBox1.DisplayMember = "key";
+            comboBox1.ValueMember = "value";
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            string combodate= comboBox1.SelectedItem.ToString();
+
+            var alkalom = from a in context.Idoponts
+                          where a.Datum.ToString() == combodate
+
+                          select new
+                          {
+                              
+                              Idopont=a.Ido.Idotartam,
+                              Páciens=a.Betegek.BetegNev,
+
+
+                          };
+            dataGridView1.DataSource = alkalom.ToList();
 
         }
     }

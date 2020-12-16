@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Database2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Database2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Betegek">
           <Key>
             <PropertyRef Name="BetegSK" />
@@ -165,7 +165,8 @@
             <End Role="Orvosok" EntitySet="Orvosok" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Database2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -189,7 +190,7 @@
           <Property Name="IdoSK" Type="Int32" Nullable="false" />
           <Property Name="Idotartam" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Idoponts" Relationship="Self.FK_Idopont_ToIdo" FromRole="Ido" ToRole="Idopont" />
-          <NavigationProperty Name="Orvosjelenlets" Relationship="Database2Model.FK_Orvosjelenlet_Ido" FromRole="Ido" ToRole="Orvosjelenlet" />
+          <NavigationProperty Name="Orvosjelenlets" Relationship="Self.FK_Orvosjelenlet_Ido" FromRole="Ido" ToRole="Orvosjelenlet" />
         </EntityType>
         <EntityType Name="Idopont">
           <Key>
@@ -213,6 +214,18 @@
           <Property Name="Orvosfajta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Orvosoks" Relationship="Self.FK_Orvosok_ToOrvosfajtak" FromRole="Orvosfajtak" ToRole="Orvosok" />
         </EntityType>
+        <EntityType Name="Orvosjelenlet">
+          <Key>
+            <PropertyRef Name="OrvosjelenletSK" />
+          </Key>
+          <Property Name="OrvosjelenletSK" Type="Int32" Nullable="false" />
+          <Property Name="OrvosFK" Type="Int32" />
+          <Property Name="Datum" Type="DateTime" Precision="0" />
+          <Property Name="IdoFK" Type="Int32" />
+          <Property Name="szabad" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Ido" Relationship="Self.FK_Orvosjelenlet_Ido" FromRole="Orvosjelenlet" ToRole="Ido" />
+          <NavigationProperty Name="Orvosok" Relationship="Self.FK_Orvosjelenlet_Orvosok" FromRole="Orvosjelenlet" ToRole="Orvosok" />
+        </EntityType>
         <EntityType Name="Orvosok">
           <Key>
             <PropertyRef Name="OrvosSK" />
@@ -223,7 +236,7 @@
           <Property Name="Jelszo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Idoponts" Relationship="Self.FK_Idopont_ToOrvosok" FromRole="Orvosok" ToRole="Idopont" />
           <NavigationProperty Name="Orvosfajtak" Relationship="Self.FK_Orvosok_ToOrvosfajtak" FromRole="Orvosok" ToRole="Orvosfajtak" />
-          <NavigationProperty Name="Orvosjelenlets" Relationship="Database2Model.FK_Orvosjelenlet_Orvosok" FromRole="Orvosok" ToRole="Orvosjelenlet" />
+          <NavigationProperty Name="Orvosjelenlets" Relationship="Self.FK_Orvosjelenlet_Orvosok" FromRole="Orvosok" ToRole="Orvosjelenlet" />
         </EntityType>
         <Association Name="FK_Idopont_ToBetegek">
           <End Role="Betegek" Type="Self.Betegek" Multiplicity="0..1" />
@@ -245,6 +258,18 @@
               <PropertyRef Name="IdoSK" />
             </Principal>
             <Dependent Role="Idopont">
+              <PropertyRef Name="IdoFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orvosjelenlet_Ido">
+          <End Role="Ido" Type="Self.Ido" Multiplicity="0..1" />
+          <End Role="Orvosjelenlet" Type="Self.Orvosjelenlet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ido">
+              <PropertyRef Name="IdoSK" />
+            </Principal>
+            <Dependent Role="Orvosjelenlet">
               <PropertyRef Name="IdoFK" />
             </Dependent>
           </ReferentialConstraint>
@@ -273,65 +298,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Database2Entities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Betegeks" EntityType="Self.Betegek" />
-          <EntitySet Name="Idoes" EntityType="Self.Ido" />
-          <EntitySet Name="Idoponts" EntityType="Self.Idopont" />
-          <EntitySet Name="Orvosfajtaks" EntityType="Self.Orvosfajtak" />
-          <EntitySet Name="Orvosoks" EntityType="Self.Orvosok" />
-          <AssociationSet Name="FK_Idopont_ToBetegek" Association="Self.FK_Idopont_ToBetegek">
-            <End Role="Betegek" EntitySet="Betegeks" />
-            <End Role="Idopont" EntitySet="Idoponts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Idopont_ToIdo" Association="Self.FK_Idopont_ToIdo">
-            <End Role="Ido" EntitySet="Idoes" />
-            <End Role="Idopont" EntitySet="Idoponts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Idopont_ToOrvosok" Association="Self.FK_Idopont_ToOrvosok">
-            <End Role="Orvosok" EntitySet="Orvosoks" />
-            <End Role="Idopont" EntitySet="Idoponts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Orvosok_ToOrvosfajtak" Association="Self.FK_Orvosok_ToOrvosfajtak">
-            <End Role="Orvosfajtak" EntitySet="Orvosfajtaks" />
-            <End Role="Orvosok" EntitySet="Orvosoks" />
-          </AssociationSet>
-          <EntitySet Name="Orvosjelenlets" EntityType="Database2Model.Orvosjelenlet" />
-          <AssociationSet Name="FK_Orvosjelenlet_Ido" Association="Database2Model.FK_Orvosjelenlet_Ido">
-            <End Role="Ido" EntitySet="Idoes" />
-            <End Role="Orvosjelenlet" EntitySet="Orvosjelenlets" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Orvosjelenlet_Orvosok" Association="Database2Model.FK_Orvosjelenlet_Orvosok">
-            <End Role="Orvosok" EntitySet="Orvosoks" />
-            <End Role="Orvosjelenlet" EntitySet="Orvosjelenlets" />
-          </AssociationSet>
-          </EntityContainer>
-        <EntityType Name="Orvosjelenlet">
-          <Key>
-            <PropertyRef Name="OrvosjelenletSK" />
-          </Key>
-          <Property Name="OrvosjelenletSK" Type="Int32" Nullable="false" />
-          <Property Name="OrvosFK" Type="Int32" />
-          <Property Name="Datum" Type="DateTime" Precision="0" />
-          <Property Name="IdoFK" Type="Int32" />
-          <Property Name="szabad" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Ido" Relationship="Database2Model.FK_Orvosjelenlet_Ido" FromRole="Orvosjelenlet" ToRole="Ido" />
-          <NavigationProperty Name="Orvosok" Relationship="Database2Model.FK_Orvosjelenlet_Orvosok" FromRole="Orvosjelenlet" ToRole="Orvosok" />
-        </EntityType>
-        <Association Name="FK_Orvosjelenlet_Ido">
-          <End Type="Database2Model.Ido" Role="Ido" Multiplicity="0..1" />
-          <End Type="Database2Model.Orvosjelenlet" Role="Orvosjelenlet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ido">
-              <PropertyRef Name="IdoSK" />
-            </Principal>
-            <Dependent Role="Orvosjelenlet">
-              <PropertyRef Name="IdoFK" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Orvosjelenlet_Orvosok">
-          <End Type="Database2Model.Orvosok" Role="Orvosok" Multiplicity="0..1" />
-          <End Type="Database2Model.Orvosjelenlet" Role="Orvosjelenlet" Multiplicity="*" />
+          <End Role="Orvosok" Type="Self.Orvosok" Multiplicity="0..1" />
+          <End Role="Orvosjelenlet" Type="Self.Orvosjelenlet" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Orvosok">
               <PropertyRef Name="OrvosSK" />
@@ -341,12 +310,44 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        </Schema>
+        <EntityContainer Name="Database2Entities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Betegeks" EntityType="Self.Betegek" />
+          <EntitySet Name="Idoes" EntityType="Self.Ido" />
+          <EntitySet Name="Idoponts" EntityType="Self.Idopont" />
+          <EntitySet Name="Orvosfajtaks" EntityType="Self.Orvosfajtak" />
+          <EntitySet Name="Orvosjelenlets" EntityType="Self.Orvosjelenlet" />
+          <EntitySet Name="Orvosoks" EntityType="Self.Orvosok" />
+          <AssociationSet Name="FK_Idopont_ToBetegek" Association="Self.FK_Idopont_ToBetegek">
+            <End Role="Betegek" EntitySet="Betegeks" />
+            <End Role="Idopont" EntitySet="Idoponts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Idopont_ToIdo" Association="Self.FK_Idopont_ToIdo">
+            <End Role="Ido" EntitySet="Idoes" />
+            <End Role="Idopont" EntitySet="Idoponts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orvosjelenlet_Ido" Association="Self.FK_Orvosjelenlet_Ido">
+            <End Role="Ido" EntitySet="Idoes" />
+            <End Role="Orvosjelenlet" EntitySet="Orvosjelenlets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Idopont_ToOrvosok" Association="Self.FK_Idopont_ToOrvosok">
+            <End Role="Orvosok" EntitySet="Orvosoks" />
+            <End Role="Idopont" EntitySet="Idoponts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orvosok_ToOrvosfajtak" Association="Self.FK_Orvosok_ToOrvosfajtak">
+            <End Role="Orvosfajtak" EntitySet="Orvosfajtaks" />
+            <End Role="Orvosok" EntitySet="Orvosoks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orvosjelenlet_Orvosok" Association="Self.FK_Orvosjelenlet_Orvosok">
+            <End Role="Orvosok" EntitySet="Orvosoks" />
+            <End Role="Orvosjelenlet" EntitySet="Orvosjelenlets" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Database2ModelStoreContainer" CdmEntityContainer="Database2Entities1">
+        <EntityContainerMapping StorageEntityContainer="Database2ModelStoreContainer" CdmEntityContainer="Database2Entities2">
           <EntitySetMapping Name="Betegeks">
             <EntityTypeMapping TypeName="Database2Model.Betegek">
               <MappingFragment StoreEntitySet="Betegek">
@@ -388,6 +389,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Orvosjelenlets">
+            <EntityTypeMapping TypeName="Database2Model.Orvosjelenlet">
+              <MappingFragment StoreEntitySet="Orvosjelenlet">
+                <ScalarProperty Name="OrvosjelenletSK" ColumnName="OrvosjelenletSK" />
+                <ScalarProperty Name="OrvosFK" ColumnName="OrvosFK" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="IdoFK" ColumnName="IdoFK" />
+                <ScalarProperty Name="szabad" ColumnName="szabad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Orvosoks">
             <EntityTypeMapping TypeName="Database2Model.Orvosok">
               <MappingFragment StoreEntitySet="Orvosok">
@@ -395,17 +407,6 @@
                 <ScalarProperty Name="OrvosNev" ColumnName="OrvosNev" />
                 <ScalarProperty Name="OrvosfajtaFK" ColumnName="OrvosfajtaFK" />
                 <ScalarProperty Name="Jelszo" ColumnName="Jelszo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Orvosjelenlets">
-            <EntityTypeMapping TypeName="Database2Model.Orvosjelenlet">
-              <MappingFragment StoreEntitySet="Orvosjelenlet">
-                <ScalarProperty Name="szabad" ColumnName="szabad" />
-                <ScalarProperty Name="IdoFK" ColumnName="IdoFK" />
-                <ScalarProperty Name="Datum" ColumnName="Datum" />
-                <ScalarProperty Name="OrvosFK" ColumnName="OrvosFK" />
-                <ScalarProperty Name="OrvosjelenletSK" ColumnName="OrvosjelenletSK" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

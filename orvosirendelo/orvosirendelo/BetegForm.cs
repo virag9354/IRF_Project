@@ -12,7 +12,7 @@ namespace orvosirendelo
 {
     public partial class BetegForm : Form
     {
-        Database2Entities1 context = new Database2Entities1();
+        Database2Entities2 context = new Database2Entities2();
         public BetegForm()
         {
             InitializeComponent();

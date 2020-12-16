@@ -10,9 +10,11 @@ namespace orvosirendelo
 {
     public class Gomb: Button
     {
+        Database2Entities2 context = new Database2Entities2();
         public DateTime datum { get; set; }
 
-        public int idopont { get; set; }
+        public int ido { get; set; }
+        public int orvosszam { get; set; }
 
         private bool _kivalasztva;
 
@@ -38,6 +40,7 @@ namespace orvosirendelo
             Height = 25;
 
 
+
             MouseDown += Gomb_MouseDown;
             
         }
@@ -45,6 +48,7 @@ namespace orvosirendelo
         private void Gomb_MouseDown(object sender, MouseEventArgs e)
         {
             Kivalasztva = true;
+       
 
         }
     }

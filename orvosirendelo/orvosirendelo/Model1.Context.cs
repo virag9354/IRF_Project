@@ -13,10 +13,10 @@ namespace orvosirendelo
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Database2Entities1 : DbContext
+    public partial class Database2Entities2 : DbContext
     {
-        public Database2Entities1()
-            : base("name=Database2Entities1")
+        public Database2Entities2()
+            : base("name=Database2Entities2")
         {
         }
     
@@ -29,7 +29,7 @@ namespace orvosirendelo
         public virtual DbSet<Ido> Idoes { get; set; }
         public virtual DbSet<Idopont> Idoponts { get; set; }
         public virtual DbSet<Orvosfajtak> Orvosfajtaks { get; set; }
-        public virtual DbSet<Orvosok> Orvosoks { get; set; }
         public virtual DbSet<Orvosjelenlet> Orvosjelenlets { get; set; }
+        public virtual DbSet<Orvosok> Orvosoks { get; set; }
     }
 }

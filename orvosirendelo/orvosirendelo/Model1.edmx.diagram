@@ -4,17 +4,20 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="887ba0e556cb47a8a438362cc39b5c52" Name="Diagram1">
-        <EntityTypeShape EntityType="Database2Model.Betegek" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Database2Model.Ido" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="Database2Model.Idopont" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="Database2Model.Orvosfajtak" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Database2Model.Orvosok" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+      <Diagram DiagramId="e82d7e3aa9924a309eab46e1cc81ac83" Name="Diagram1">
+        <EntityTypeShape EntityType="Database2Model.Betegek" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database2Model.Ido" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database2Model.Idopont" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database2Model.Orvosfajtak" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database2Model.Orvosjelenlet" Width="1.5" PointX="8.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database2Model.Orvosok" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
         <AssociationConnector Association="Database2Model.FK_Idopont_ToBetegek" ManuallyRouted="false" />
         <AssociationConnector Association="Database2Model.FK_Idopont_ToIdo" ManuallyRouted="false" />
+        <AssociationConnector Association="Database2Model.FK_Orvosjelenlet_Ido" ManuallyRouted="false" />
         <AssociationConnector Association="Database2Model.FK_Idopont_ToOrvosok" ManuallyRouted="false" />
         <AssociationConnector Association="Database2Model.FK_Orvosok_ToOrvosfajtak" ManuallyRouted="false" />
-        </Diagram>
+        <AssociationConnector Association="Database2Model.FK_Orvosjelenlet_Orvosok" ManuallyRouted="false" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

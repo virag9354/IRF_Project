@@ -12,6 +12,7 @@ namespace orvosirendelo
 {
     public partial class BetegsegForm : Form
     {
+        Database2Entities2 context =new Database2Entities2();
         public int orvosszam;
         public BetegsegForm()
         {
@@ -20,7 +21,8 @@ namespace orvosirendelo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // beolvasás
+            Idopont ip = new Idopont();
+            
             
         }
 
@@ -34,37 +36,17 @@ namespace orvosirendelo
             comboBox1.DisplayMember = "key";
             comboBox1.ValueMember = "value";
 
-            comboBox2.Items.Add(new KeyValuePair<string, string>("Dr. Farkas Viola", "1"));
-            comboBox2.Items.Add(new KeyValuePair<string, string>("Dr. Cserepes Etelka", "2"));
-            comboBox2.Items.Add(new KeyValuePair<string, string>("Dr. Csömöri Márta", "3"));
-            comboBox2.Items.Add(new KeyValuePair<string, string>("Dr. Újházi Klára", "4"));
-            comboBox2.Items.Add(new KeyValuePair<string, string>("Dr. Pataki Gábor", "5"));
-            comboBox2.Items.Add(new KeyValuePair<string, string>("Dr. Rajkóczi Zita", "6"));
 
-            comboBox2.DisplayMember = "key";
-            comboBox2.ValueMember = "value";
 
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            comboBox2.Items.Clear();
-            if (comboBox1.SelectedIndex == 0)
-            {
-                comboBox2.Items.Add(new KeyValuePair<string, string>("Nincs preferenciám", "0"));
-                comboBox2.Items.Add(new KeyValuePair<string, string>("Dr. Farkas Viola", "1"));
-                comboBox2.Items.Add(new KeyValuePair<string, string>("Dr. Cserepes Etelka", "2"));
-                comboBox2.Items.Add(new KeyValuePair<string, string>("Dr. Csömöri Márta", "3"));
-                comboBox2.Items.Add(new KeyValuePair<string, string>("Dr. Újházi Klára", "4"));
-                comboBox2.Items.Add(new KeyValuePair<string, string>("Dr. Pataki Gábor", "5"));
-                comboBox2.Items.Add(new KeyValuePair<string, string>("Dr. Rajkóczi Zita", "6"));
-
-            }
+            
+            
             if (comboBox1.SelectedIndex == 1)
             {
-                comboBox2.Items.Add(new KeyValuePair<string, string>("Nincs preferenciám", "0"));
-                comboBox2.Items.Add(new KeyValuePair<string, string>("Dr. Farkas Viola", "1"));
-                comboBox2.Items.Add(new KeyValuePair<string, string>("Dr. Cserepes Etelka", "2"));
+                
                 panel1.Controls.Clear();
                 HaziorvosUserControl huc = new HaziorvosUserControl();
                 panel1.Controls.Add(huc);
@@ -73,9 +55,7 @@ namespace orvosirendelo
             }
             else if (comboBox1.SelectedIndex == 2)
             {
-                comboBox2.Items.Add(new KeyValuePair<string, string>("Nincs preferenciám", "0"));
-                comboBox2.Items.Add(new KeyValuePair<string, string>("Dr. Csömöri Márta", "3"));
-                comboBox2.Items.Add(new KeyValuePair<string, string>("Dr. Újházi Klára", "4"));
+                
                 panel1.Controls.Clear();
                 BorgyogyaszUserControl buc = new BorgyogyaszUserControl();
                 panel1.Controls.Add(buc);
@@ -83,53 +63,18 @@ namespace orvosirendelo
             }
             else if (comboBox1.SelectedIndex == 3)
             {
-                comboBox2.Items.Add(new KeyValuePair<string, string>("Nincs preferenciám", "0"));
-                comboBox2.Items.Add(new KeyValuePair<string, string>("Dr. Pataki Gábor", "5"));
-                comboBox2.Items.Add(new KeyValuePair<string, string>("Dr. Rajkóczi Zita", "6"));
+                
                 panel1.Controls.Clear();
                 NogyogyaszUserControl nuc = new NogyogyaszUserControl();
                 panel1.Controls.Add(nuc);
                 nuc.Dock = DockStyle.Fill;
+                
+                
             }
 
-            comboBox2.DisplayMember = "key";
-            comboBox2.ValueMember = "value";
+
         }
 
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBox2.SelectedIndex == 0)
-            {
-                orvosszam = 0;
-            }
-            else if (comboBox2.SelectedIndex == 1)
-            {
-                orvosszam = 1;
-            }
-            else if (comboBox2.SelectedIndex == 2)
-            {
-                orvosszam = 2;
-            }
-            else if (comboBox2.SelectedIndex == 3)
-            {
-                orvosszam = 3;
-            }
-            else if (comboBox2.SelectedIndex == 4)
-            {
-                orvosszam = 4;
-            }
-            else if (comboBox2.SelectedIndex == 5)
-            {
-                orvosszam = 5;
-            }
-            else if (comboBox2.SelectedIndex == 6)
-            {
-                orvosszam = 6;
-            }
-
-            comboBox2.DisplayMember = "key";
-            comboBox2.ValueMember = "value";
-        }
 
         private void button4_Click(object sender, EventArgs e)
         {

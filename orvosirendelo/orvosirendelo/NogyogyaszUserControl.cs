@@ -15,7 +15,7 @@ namespace orvosirendelo
     {
         DateTime moment = DateTime.Now;
         string kezdet;
-
+        Database2Entities2 context = new Database2Entities2();
 
 
         public NogyogyaszUserControl()
@@ -26,7 +26,7 @@ namespace orvosirendelo
 
             //Labelek kirakása
 
-            for (int i = 1; i < 12; i++)
+            for (int i = 1; i < 10; i++)
             {
                 Cimke label = new Cimke();
                 Cimke labell = new Cimke();
@@ -73,16 +73,44 @@ namespace orvosirendelo
 
             for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < 22; j++)
+                for (int j = 0; j < 18; j++)
                 {
                     Gomb btn = new Gomb();
 
                     btn.Top = 4 + j * 31;
                     btn.Left = 80 + i * 83;
+                    if (i<4)
+                    {
+                        btn.BackColor = Color.Tan;
+                        btn.orvosszam = 6;
+                    }
+                    else if (i>3)
+                    {
+                        btn.BackColor = Color.LightBlue;
+                        btn.orvosszam = 5;
+                    }
+                    if (j == 8)
+                    {
+                        btn.BackColor = Color.Gray;
+                        btn.Enabled = true;
+                    }
+                    else if (j==9)
+                    {
+                        btn.BackColor = Color.Gray;
+                        btn.Enabled = true;
+                    }
 
                     panel1.Controls.Add(btn);
 
+                    int naph = int.Parse(moment.DayOfWeek.ToString("d"));
+                    DateTime hetfo = moment.AddDays(-naph + 1);
+
+                    btn.datum = hetfo.AddDays(i);
+                    btn.ido = j + 1;
+
                     
+
+
 
 
 
@@ -116,7 +144,25 @@ namespace orvosirendelo
 
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Idopont ip = new Idopont();
+        //    ip.IdoFK = btn.ido;
+        //    ip.Datum = btn.datum;
+        //    ip.OrvosFK = btn.orvosszam;
 
+            context.Idoponts.Add(ip);
+
+            try
+            {
+                context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 
 

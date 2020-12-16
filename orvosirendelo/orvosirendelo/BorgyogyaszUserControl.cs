@@ -113,6 +113,7 @@ namespace orvosirendelo
                         if (counter > 0)
                         {
                             btn.BackColor = Color.Red;
+                            btn.Enabled = false;
                         }
 
                     }
@@ -141,6 +142,7 @@ namespace orvosirendelo
                         if (counter > 0)
                         {
                             btn.BackColor = Color.Red;
+                            btn.Enabled = false;
                         }
 
                     }

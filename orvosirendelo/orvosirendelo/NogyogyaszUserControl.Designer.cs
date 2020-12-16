@@ -45,6 +45,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -85,22 +87,24 @@
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.button1.Location = new System.Drawing.Point(772, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(30, 35);
             this.button1.TabIndex = 1;
             this.button1.Text = ">";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.button2.Location = new System.Drawing.Point(727, 12);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(30, 35);
             this.button2.TabIndex = 2;
             this.button2.Text = "<";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label5
@@ -220,19 +224,44 @@
             // 
             // button3
             // 
+            this.button3.BackColor = System.Drawing.Color.WhiteSmoke;
             this.button3.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button3.Location = new System.Drawing.Point(839, 280);
+            this.button3.Location = new System.Drawing.Point(835, 309);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(132, 67);
+            this.button3.Size = new System.Drawing.Size(146, 125);
             this.button3.TabIndex = 9;
-            this.button3.Text = "Időpont foglaláshoz hívja a 06 / 1 123 123";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Text = "Időpont foglaláshoz hívja a 06 / 1 123 123 telefonszámot!\r\n";
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.OrangeRed;
+            this.label14.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label14.Location = new System.Drawing.Point(835, 221);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(61, 21);
+            this.label14.TabIndex = 26;
+            this.label14.Text = "Foglalt";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Gray;
+            this.label15.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label15.Location = new System.Drawing.Point(835, 256);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(108, 21);
+            this.label15.TabIndex = 27;
+            this.label15.Text = "Nem elérhető";
             // 
             // NogyogyaszUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
@@ -251,7 +280,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label1);
             this.Name = "NogyogyaszUserControl";
-            this.Size = new System.Drawing.Size(982, 483);
+            this.Size = new System.Drawing.Size(997, 483);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -276,5 +305,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
     }
 }
